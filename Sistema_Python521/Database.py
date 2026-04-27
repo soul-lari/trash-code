@@ -20,8 +20,7 @@ class Database:
         try:
             self.cursor.execute("SELECT * FROM editora;")
             editoras = self.cursor.fetchall()
-            for item in editoras:
-                print(f"ID: {(item[0])} | {(item[1])} | {(item[2])}")
+            return editoras
               
         except Exception as error:
             print(error)
@@ -54,7 +53,7 @@ class Database:
         try:
             self.cursor.execute("""INSERT INTO editora (nome,cidade,estado) VALUES (%s,%s,%s);""",param)
             self.conn.commit()
-            print("Editora Cadastrada com Sucesso")
+            return True
               
         except Exception as error:
             print(error)
@@ -78,6 +77,30 @@ class Database:
             print("Editora deletada com sucesso!!!")
         except Exception as error:
             print(error)
+
+    def update_editora(self,id_editora):
+        self.connect()
+        try:
+            self.cursor.execute(f'SELET * FROM editora WHERE id_editora = {id_editora};')
+            editora_atualizar = self.cursor.fetchone()
+            dados_atualizar = list(editora_atualizar)
+            dados_atualizar[1] = input("Digite o novo nome: ")
+            dados_atualizar[1] = input("Digite o novo nome: ")
+            dados_atualizar[1] = input("Digite o novo nome: ")
+            editora_atualizar = tuple(dados_atualizar)
+            self.cursor.execute(f"""
+                                UPDATE editora
+                                SET nome = '{dados_atualizar[1]}',
+                                cidade = '{dados_atualizar[2]}',
+                                estado = '{dados_atualizar[3]}',
+                                WHERE id_editora = '{dados_atualizar[0]}'
+                                """)
+            self.conn.commit()
+            return True
+        except:
+            print("erro")
+
+
 
 if __name__ == "__main__":
     banco = Database()
