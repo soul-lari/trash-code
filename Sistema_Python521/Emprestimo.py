@@ -29,10 +29,10 @@ class Emprestimo:
         id_emprestimo = int(input("Digite o ID do Emprestimo para atualizar: "))
         lista_dados = self.buscar_id(id_emprestimo)
         print(lista_dados)
-        lista_dados [1] = input("Digite o novo titulo: ")
-        lista_dados [2] = input("Digite o novo id_aluno: ")
-        lista_dados [3] = input("Digite o novo data_emprestimo: ")
-        lista_dados [4] = input("Digite o novo ano_edição: ")
+        lista_dados [1] = input("Digite o novo ID do livro: ")
+        lista_dados [2] = input("Digite o novo ID do aluno: ")
+        lista_dados [3] = input("Digite a nova data do emprestimo: ")
+        lista_dados [4] = input("Digite a nova data de devolução: ")
         res = db.update_emprestimo(lista_dados)
         if res == True:
              print("Atualizado com sucesso!")
@@ -42,8 +42,6 @@ class Emprestimo:
          res = db.delete_emprestimo(id_emprestimo)
          if res == True:
               print("Emprestimo deletado com sucesso!")
-
-
 
 e1 = Emprestimo("id_livro", "id_aluno", "data_emprestimo", "data_devolucao")
 

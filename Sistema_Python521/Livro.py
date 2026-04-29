@@ -16,8 +16,7 @@ class Livro:
     def listar(self):
         db = Database()
         res = db.select_livro()
-        for item in res:
-                print(f"ID: {(item[0])} | {(item[1])} | {(item[2])} | {(item[3])} | {(item[4])}")
+        return res
     
     def buscar_id(sel, id_livro):
          db = Database()
@@ -29,10 +28,10 @@ class Livro:
         id_livro = int(input("Digite o ID do Livro para atualizar: "))
         lista_dados = self.buscar_id(id_livro)
         print(lista_dados)
-        lista_dados [1] = input("Digite o novo titulo: ")
-        lista_dados [2] = input("Digite o novo id_autor: ")
-        lista_dados [3] = input("Digite o novo id_editora: ")
-        lista_dados [4] = input("Digite o novo ano_edição: ")
+        lista_dados [1] = input("Digite o novo Titulo: ")
+        lista_dados [2] = input("Digite o novo o ID do autor: ")
+        lista_dados [3] = input("Digite o novo o ID da editora: ")
+        lista_dados [4] = input("Digite o novo ano de edição: ")
         res = db.update_livro(lista_dados)
         if res == True:
              print("Atualizado com sucesso!")

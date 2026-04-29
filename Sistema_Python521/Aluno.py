@@ -34,7 +34,7 @@ class Aluno:
         lista_dados [2] = input("Digite a nova matricula: ")
         lista_dados [3] = input("Digite o novo curso: ")
         lista_dados [5] = input("Digite o novo sexo: ")
-        lista_dados [4] = input("Digite o nova idade: ")
+        lista_dados [4] = input("Digite a nova idade: ")
         res = db.update_aluno(lista_dados)
 
         if res == True:
@@ -44,7 +44,7 @@ class Aluno:
          db = Database()
          res = db.delete_aluno(id_aluno)
          if res == True:
-              print("Aluno deletada com sucesso!")
+              print("Aluno deletado com sucesso!")
 
 
 

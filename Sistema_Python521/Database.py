@@ -25,6 +25,9 @@ class Database:
         except Exception as error:
             print(error)
 
+        finally:
+            self.close_connecion()
+
     def select_editora(self):
         self.connect()
         try:
@@ -34,6 +37,9 @@ class Database:
               
         except Exception as error:
             print(error)
+
+        finally:
+            self.close_connecion()
 
     def select_livro(self):
         self.connect()
@@ -45,6 +51,9 @@ class Database:
         except Exception as error:
             print(error)
 
+        finally:
+            self.close_connecion()
+
     def select_aluno(self):
         self.connect()
         try:
@@ -54,6 +63,9 @@ class Database:
               
         except Exception as error:
             print(error)
+
+        finally:
+            self.close_connecion()
 
     def select_emprestimo(self):
         self.connect()
@@ -65,6 +77,9 @@ class Database:
         except Exception as error:
             print(error)
 
+        finally:
+            self.close_connecion()
+
     def select_autor_by_id(self,id_autor):
         self.connect()
         try:
@@ -74,6 +89,9 @@ class Database:
               
         except Exception as error:
             print(error)
+
+        finally:
+            self.close_connecion()
 
     def select_editora_by_id(self,id_editora):
         self.connect()
@@ -85,6 +103,9 @@ class Database:
         except Exception as error:
             print(error)
 
+        finally:
+            self.close_connecion()
+
     def select_livro_by_id(self,id_livro):
         self.connect()
         try:
@@ -94,6 +115,9 @@ class Database:
               
         except Exception as error:
             print(error)
+
+        finally:
+            self.close_connecion()
 
     def select_aluno_by_id(self,id_aluno):
         self.connect()
@@ -105,6 +129,9 @@ class Database:
         except Exception as error:
             print(error)
 
+        finally:
+            self.close_connecion()
+
     def select_emprestimo_by_id(self,id_emprestimo):
         self.connect()
         try:
@@ -114,6 +141,9 @@ class Database:
               
         except Exception as error:
             print(error)
+
+        finally:
+            self.close_connecion()
 
     def insert_autor(self,nome,nacionalidade,sexo):
 
@@ -125,6 +155,9 @@ class Database:
               
         except Exception as error:
             print(error)
+
+        finally:
+            self.close_connecion()
 
     def insert_editora(self,nome,cidade,estado):
         param = (nome,cidade,estado)
@@ -138,6 +171,9 @@ class Database:
         except Exception as error:
             print(error)
 
+        finally:
+            self.close_connecion()
+
     def insert_livro(self,titulo, id_autor, id_editora, ano_edicao):
 
         self.connect()
@@ -148,6 +184,9 @@ class Database:
               
         except Exception as error:
             print(error)
+
+        finally:
+            self.close_connecion()
 
     def insert_aluno(self,nome,matricula,curso,sexo,idade):
 
@@ -160,6 +199,9 @@ class Database:
         except Exception as error:
             print(error)
 
+        finally:
+            self.close_connecion()
+
     def insert_emprestimo(self,id_livro, id_aluno, data_emprestimo, data_devolucao):
 
         self.connect()
@@ -171,6 +213,9 @@ class Database:
         except Exception as error:
             print(error)
 
+        finally:
+            self.close_connecion()
+
     def delete_autor(self,id_autor):
         self.connect()
         try:
@@ -181,6 +226,9 @@ class Database:
         except Exception as error:
             print(error)
 
+        finally:
+            self.close_connecion()
+
     def delete_editora(self,id_editora):
         self.connect()
         try:
@@ -190,6 +238,9 @@ class Database:
         
         except Exception as error:
             print(error)
+        
+        finally:
+            self.close_connecion()
 
     def delete_livro(self,id_livro):
         self.connect()
@@ -200,6 +251,9 @@ class Database:
         
         except Exception as error:
             print(error)
+        
+        finally:
+            self.close_connecion()
 
     def delete_aluno(self,id_aluno):
         self.connect()
@@ -211,6 +265,9 @@ class Database:
         except Exception as error:
             print(error)
 
+        finally:
+            self.close_connecion()
+
     def delete_emprestimo(self,id_emprestimo):
         self.connect()
         try:
@@ -220,6 +277,9 @@ class Database:
         
         except Exception as error:
             print(error)
+        
+        finally:
+            self.close_connecion()
 
     def update_autor(self,lista_dados):
         self.connect()
@@ -235,6 +295,9 @@ class Database:
             return True
         except Exception as error:
             print(error)
+        
+        finally:
+            self.close_connecion()
 
     def update_editora(self,lista_dados):
         self.connect()
@@ -251,6 +314,9 @@ class Database:
         except Exception as error:
             print(error)
 
+        finally:
+            self.close_connecion()
+
     def update_livro(self,lista_dados):
         self.connect()
         try:
@@ -266,6 +332,9 @@ class Database:
             return True
         except Exception as error:
             print(error)
+
+        finally:
+            self.close_connecion()
 
     def update_aluno(self,lista_dados):
         self.connect()
@@ -284,6 +353,9 @@ class Database:
         except Exception as error:
             print(error)
 
+        finally:
+            self.close_connecion()
+
     def update_emprestimo(self,lista_dados):
         self.connect()
         try:
@@ -299,3 +371,13 @@ class Database:
             return True
         except Exception as error:
             print(error)
+
+        finally:
+            self.close_connecion()
+
+    def close_connecion(self):
+        if self.conn.is_connected():
+            self.cursor.close()
+            self.conn.close()
+            print("Conexão encerrada com sucesso!!! ")
+

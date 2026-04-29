@@ -39,7 +39,7 @@ class Autor:
          db = Database()
          res = db.delete_autor(id_autor)
          if res == True:
-              print("autor deletada com sucesso!")
+              print("Autor deletado com sucesso!")
 
 
 
